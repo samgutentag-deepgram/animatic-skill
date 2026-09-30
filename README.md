@@ -39,20 +39,36 @@ pip install pillow   # or in a venv; plus ffmpeg: brew install ffmpeg
 
 Then type `/animatic path/to/script.md`. No Deepgram key yet? The skill notices on the first run and walks you through getting one. Any agent that reads the [Agent Skills](https://agentskills.io) format can use it.
 
-## Prompts and commands
+## Prompts
 
-You ask, the agent runs it. The command column is the same thing if you'd rather drive: `R` is `python3 ~/.claude/skills/animatic/scripts/make_animatic.py`, run from your project folder.
+You ask, the agent runs it.
 
-| You want to | Ask your agent | Or run |
-|---|---|---|
-| Check you have a key | `/animatic` am I set up? | `R` |
-| Know the cost first | `/animatic scripts/intro.md`, but tell me what it costs before you render | `R animatic/beats.json --estimate` |
-| Render it | `/animatic scripts/intro.md` | `R animatic/beats.json` |
-| A faster voice | render that again, a bit faster | `R animatic/beats.json --speed 1.3` (0.5 to 1.5) |
-| A different voice | use the haley voice this time | `R animatic/beats.json --voice flux-haley-en` |
-| Price it for your plan | price it at the Growth rate, $0.0405 per 1k characters | `R animatic/beats.json --estimate --price 0.0405` |
-| Play your real demo clip | play `demo.wav` where the script runs the demo | an `audio` beat, see below |
-| Show code on screen | use `app.py` lines 12 to 20 as the still for the setup beat | `python3 ~/.claude/skills/animatic/scripts/code_still.py app.py animatic/03.png --lines 12-20` |
+| You want to | Ask your agent |
+|---|---|
+| Check you have a key | `/animatic` am I set up? |
+| Know the cost first | `/animatic scripts/intro.md`, but tell me what it costs before you render |
+| Render it | `/animatic scripts/intro.md` |
+| A faster voice | render that again, a bit faster |
+| A different voice | use the haley voice this time |
+| Price it for your plan | price it at the Growth rate, $0.0405 per 1k characters |
+| Play your real demo clip | play `demo.wav` where the script runs the demo |
+| Show code on screen | use `app.py` lines 12 to 20 as the still for the setup beat |
+
+## Commands
+
+The same things, if you'd rather drive. Run them from your project folder.
+
+```bash
+S=~/.claude/skills/animatic/scripts
+
+python3 $S/make_animatic.py                                          # check you have a key
+python3 $S/make_animatic.py animatic/beats.json --estimate           # cost, runtime, balance. no TTS calls
+python3 $S/make_animatic.py animatic/beats.json                      # render
+python3 $S/make_animatic.py animatic/beats.json --speed 1.3          # faster voice, 0.5 to 1.5
+python3 $S/make_animatic.py animatic/beats.json --voice flux-haley-en
+python3 $S/make_animatic.py animatic/beats.json --estimate --price 0.0405
+python3 $S/code_still.py app.py animatic/03.png --lines 12-20        # code as a still, lines lit
+```
 
 Beat shapes, from [BEATS.md](BEATS.md):
 
@@ -65,7 +81,7 @@ Beat shapes, from [BEATS.md](BEATS.md):
 
 ## Example
 
-[`examples/animatic-skill-demo`](examples/animatic-skill-demo) is the animatic of this skill, made with this skill: the `beats.json` an agent wrote, the five stills, and `make_stills.py`, which drew them (macOS fonts). Run `R examples/animatic-skill-demo/animatic/beats.json` to render it yourself, about 27 seconds.
+[`examples/animatic-skill-demo`](examples/animatic-skill-demo) is the animatic of this skill, made with this skill: the `beats.json` an agent wrote, the five stills, and `make_stills.py`, which drew them (macOS fonts). Run `python3 $S/make_animatic.py examples/animatic-skill-demo/animatic/beats.json` to render it yourself, about 27 seconds.
 
 ## Cost
 
