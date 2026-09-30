@@ -1,0 +1,7 @@
+[
+  {"show": "SKILL.md in the editor", "say": "this is the animatic skill. hand your agent a video script, and you get back a draft of the video before you film anything.", "still": "01-skill.png"},
+  {"show": "beats.json", "say": "it cuts the script into beats. each beat gets the line that's said, and a still of what the viewer should see.", "still": "02-beats.png"},
+  {"show": "terminal, the estimate", "say": "before it spends anything, it tells you what the run will cost, and checks your balance.", "still": "03-estimate.png"},
+  {"show": "terminal, the render", "say": "then deepgram tts narrates every beat, and it all lands in one mp4. this video is one.", "still": "04-render.png"},
+  {"show": "the repo", "say": "it's on github. point it at your script, and watch your video before you shoot it.", "still": "05-repo.png"}
+]

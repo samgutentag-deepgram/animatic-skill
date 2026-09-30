@@ -63,6 +63,10 @@ Beat shapes, from [BEATS.md](BEATS.md):
 | A demo clip plays | `{"show": "the clip", "audio": "demo.wav"}` |
 | A command runs, nobody talks | `{"show": "terminal", "hold": 4}` |
 
+## Example
+
+[`examples/animatic-skill-demo`](examples/animatic-skill-demo) is the animatic of this skill, made with this skill: the `beats.json` an agent wrote, the five stills, and `make_stills.py`, which drew them (macOS fonts). Run `R examples/animatic-skill-demo/animatic/beats.json` to render it yourself, about 27 seconds.
+
 ## Cost
 
 `--estimate` counts the characters, prices them (Flux TTS is $0.045 per 1k characters pay-as-you-go), estimates the runtime, and reads your remaining Deepgram balance. It makes no TTS calls. If the balance won't cover the run, it tells you to top up in the console. Reading the balance needs a key with the `billing:read` scope; without one, the estimate still prices the run and says the balance is unknown. A three minute script is about 2,000 characters, roughly ten cents.
